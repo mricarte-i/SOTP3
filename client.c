@@ -8,6 +8,7 @@
 //AF_INET = 2
 
 int main(int argc, char **argv){
+    FILE* cuatro = fdopen(4, "w+");
     int sockfd = socket(AF_INET,SOCK_STREAM,0);
     struct sockaddr_in serv_addr;
     serv_addr.sin_family = AF_INET;
@@ -22,7 +23,19 @@ int main(int argc, char **argv){
         printf("\nConnection Failed \n"); 
         return -1; 
     }
-
     printf("connected!\n"); 
+    char gotcha[] = "entendido\n";
+    send(sockfd , gotcha , strlen(gotcha) , 0 ); 
+    printf("1\n");
+    char hashtag[] = "0854780\n";
+    send(sockfd , hashtag , strlen(hashtag) , 0 ); 
+    printf("2\n");
+    char mlk[] = "martin luther king\n";
+    send(sockfd , mlk , strlen(mlk) , 0 ); 
+    printf("3\n");
+    char buffer[32];
+    read(3,buffer, 32);
+    printf(buffer);
+    printf("?!\n");
     return 0;
 }
