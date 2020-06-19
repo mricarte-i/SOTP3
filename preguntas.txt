@@ -11,3 +11,5 @@
 Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?
 
 ¿Cómo se puede implementar un servidor que atienda muchas conexiones sin usar procesos ni threads?
+
+¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?
