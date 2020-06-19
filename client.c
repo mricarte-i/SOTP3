@@ -66,5 +66,11 @@ int main(int argc, char **argv){
     char* awesome = "this is awesome\n";
     send(sockfd , awesome , strlen(awesome) , 0 );
     printf("9\n");
+
+    char* chin_chu_lan_cha = "chin_chu_lan_cha\n";
+    send(sockfd , chin_chu_lan_cha , strlen(chin_chu_lan_cha) , 0 );
+    printf("10\n");
+
+    //FILE* quine = fopen()
     return 0;
 }
