@@ -27,15 +27,23 @@ int main(int argc, char **argv){
     char gotcha[] = "entendido\n";
     send(sockfd , gotcha , strlen(gotcha) , 0 ); 
     printf("1\n");
+
+
     char hashtag[] = "0854780\n";
     send(sockfd , hashtag , strlen(hashtag) , 0 ); 
     printf("2\n");
+
+
     char mlk[] = "martin luther king\n";
     send(sockfd , mlk , strlen(mlk) , 0 ); 
     printf("3\n");
-    char buffer[32];
-    read(3,buffer, 32);
-    printf(buffer);
-    printf("?!\n");
+
+
+    char* la_respuesta = "es_go_lo_dro_bo\n";
+    send(sockfd , la_respuesta , strlen(la_respuesta) , 0 );
+    printf("4\n");
+
+
+
     return 0;
 }
