@@ -43,7 +43,9 @@ int main(int argc, char **argv){
     send(sockfd , la_respuesta , strlen(la_respuesta) , 0 );
     printf("4\n");
 
-
-
+    char* too_easy = "too_easy\n";
+    send(sockfd , too_easy , strlen(too_easy) , 0 );
+    printf("5\n");
+    //FILE* challenges = fopen("challenges.c", "w+");
     return 0;
 }
