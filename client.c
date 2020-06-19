@@ -46,6 +46,12 @@ int main(int argc, char **argv){
     char* too_easy = "too_easy\n";
     send(sockfd , too_easy , strlen(too_easy) , 0 );
     printf("5\n");
-    //FILE* challenges = fopen("challenges.c", "w+");
+
+
+    char* run_me = ".RUN_ME\n";
+    send(sockfd , run_me , strlen(run_me) , 0 );
+    printf("6\n");
+
+
     return 0;
 }

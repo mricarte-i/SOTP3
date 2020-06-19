@@ -9,3 +9,5 @@
 ¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?
 
 Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?
+
+¿Cómo se puede implementar un servidor que atienda muchas conexiones sin usar procesos ni threads?
