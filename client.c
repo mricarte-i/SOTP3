@@ -71,6 +71,10 @@ int main(int argc, char **argv){
     send(sockfd , chin_chu_lan_cha , strlen(chin_chu_lan_cha) , 0 );
     printf("10\n");
 
+    char* gdbme = "0x401dcf\n";
+    send(sockfd , gdbme , strlen(gdbme) , 0 );
+    printf("11\n");
+
     //FILE* quine = fopen()
     return 0;
 }

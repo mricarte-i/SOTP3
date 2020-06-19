@@ -18,3 +18,4 @@ sockets es un mecanismo de IPC. ¿Qué es más eficiente entre sockets y pipes?
 
 ¿Cuáles son las características del protocolo SCTP?
 
+¿Qué es un RFC?
