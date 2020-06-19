@@ -52,12 +52,19 @@ int main(int argc, char **argv){
     send(sockfd , run_me , strlen(run_me) , 0 );
     printf("6\n");
 
+
     char* indeterminado = "in_de_ter_mi_na_do\n";
     send(sockfd , indeterminado , strlen(indeterminado) , 0 );
     printf("7\n");
 
+
     char* thunderCats = "thunder thunder thunder thundercats\n";
     send(sockfd , thunderCats , strlen(thunderCats) , 0 );
     printf("8\n");
+
+
+    char* awesome = "this is awesome\n";
+    send(sockfd , awesome , strlen(awesome) , 0 );
+    printf("9\n");
     return 0;
 }
