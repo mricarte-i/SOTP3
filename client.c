@@ -3,12 +3,12 @@
 #include <sys/types.h> 
 #include <arpa/inet.h> 
 #include <unistd.h> 
-#include <string.h> 
-#define PORT 8080
+#include <string.h>
+#include "port.h"
+
 //AF_INET = 2
 
 int main(int argc, char **argv){
-    FILE* cuatro = fdopen(4, "w+");
     int sockfd = socket(AF_INET,SOCK_STREAM,0);
     struct sockaddr_in serv_addr;
     serv_addr.sin_family = AF_INET;
@@ -24,17 +24,17 @@ int main(int argc, char **argv){
         return -1; 
     }
     printf("connected!\n"); 
-    char gotcha[] = "entendido\n";
+    char* gotcha = "entendido\n";
     send(sockfd , gotcha , strlen(gotcha) , 0 ); 
     printf("1\n");
 
 
-    char hashtag[] = "0854780\n";
+    char* hashtag = "0854780\n";
     send(sockfd , hashtag , strlen(hashtag) , 0 ); 
     printf("2\n");
 
 
-    char mlk[] = "martin luther king\n";
+    char* mlk = "martin luther king\n";
     send(sockfd , mlk , strlen(mlk) , 0 ); 
     printf("3\n");
 
@@ -75,6 +75,5 @@ int main(int argc, char **argv){
     send(sockfd , gdbme , strlen(gdbme) , 0 );
     printf("11\n");
 
-    //FILE* quine = fopen()
     return 0;
 }
