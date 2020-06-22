@@ -217,6 +217,12 @@ void level4(){
     printf("write: Bad file descriptor\n");
 }
 
+void level5(){
+    printf("------------- LEVEL:5 -------------\n");
+    printf("strings:52\n");
+}
+
+
 void level6(){
     printf("------------- LEVEL:6 -------------\n");
     printf("... -s ... : ... .got .got.plt .data .comment ?\n");
