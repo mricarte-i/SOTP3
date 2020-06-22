@@ -88,7 +88,7 @@ void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level5, level6
 int initialize_server(){
     int server_fd, new_socket;
     struct sockaddr_in address;
-    FILE *stream;
+
     int opt = 1;
     int addrlen = sizeof(address);
 
@@ -168,18 +168,18 @@ void game(int socket){
 }
 
 void gdbme(){
-    if(1 == 0){
-
+    int aux = 0;
+    if(aux != 0x12345678){
+        printf("ENTER to try again\n");
     }else{
-        perror("getline");
-        exit(EXIT_FAILURE);
+        printf("The answer is gdb_me\n");  
     }
 }
 
 void mixer(){
     time_t t;
     char c;
-    char v[]= "La respuesta es in_de_ter_mi_na_do\n";
+    char v[]= "The answer is in_de_ter_mi_na_do\n";
     /* Intializes random number generator */
     srand((unsigned) time(&t));
     int i, n = 36;
@@ -219,13 +219,13 @@ void level4(){
 
 void level5(){
     printf("------------- LEVEL:5 -------------\n");
-    printf("strings:54\n");
+    printf("strings:56\n");
 }
 
 
 void level6(){
     printf("------------- LEVEL:6 -------------\n");
-    printf("... -s ... : ... .got .got.plt .data .comment ?\n");
+    printf(".data .bss .comment ? .shstrtab\n");
 }
 
 
