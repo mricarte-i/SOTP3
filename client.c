@@ -23,6 +23,8 @@ int main(int argc, char **argv){
         printf("\nConnection Failed \n"); 
         return -1; 
     }
+
+
     printf("connected!\n"); 
     char* gotcha = "entendido\n";
     send(sockfd , gotcha , strlen(gotcha) , 0 ); 
@@ -42,6 +44,7 @@ int main(int argc, char **argv){
     char* la_respuesta = "es_go_lo_dro_bo\n";
     send(sockfd , la_respuesta , strlen(la_respuesta) , 0 );
     printf("4\n");
+
 
     char* too_easy = "too_easy\n";
     send(sockfd , too_easy , strlen(too_easy) , 0 );

@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 
-#define MAX_LEVEL 9
+#define MAX_LEVEL 10
 #define MAX_LENGTH_BUFFER 2000
 
 //función para limpiar la pantalla 
@@ -72,7 +72,7 @@ void level3(void);
 void level4(void);
 //void level5(void);
 void level6(void);
-//void level7(void);
+void level7(void);
 void level8(void);
 void level9(void);
 void level10(void);
@@ -82,7 +82,7 @@ void level11(void);
 
 
 // arreglo con todos los niveles del juego
-void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level6, level8, level9, level10, level11};
+void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level6, level7, level8, level9, level10, level11};
 
 // función para conectar el server con el cliente a través de un socket
 int initialize_server(){
@@ -150,6 +150,8 @@ void game(int socket){
             }
             if(strcmp(buffer, answers[i]) == 0){
                 solved = 1;
+                printf("Level completed!\ngood for you\n");
+                sleep(2);
            }else{
                 printf("Wrong answer: %s\n", buffer);
                 sleep(2);
@@ -171,6 +173,21 @@ void gdbme(){
     }else{
         perror("getline");
         exit(EXIT_FAILURE);
+    }
+}
+
+void mixer(){
+    time_t t;
+    char c;
+    char v[]= "La respuesta es in_de_ter_mi_na_do\n";
+    /* Intializes random number generator */
+    srand((unsigned) time(&t));
+    int i, n = 36;
+    /* Print 5 random numbers from 0 to 49 */
+    for( i = 0 ; i < n ; i++ ) {
+        c = 33 + rand()%(127-33);
+        write(1, v + i, 1);
+        write(2, &c, 1);
     }
 }
 
@@ -206,8 +223,14 @@ void level6(){
 }
 
 
-void level8(){
+void level7(){
+    printf("------------- LEVEL:7 -------------\n");
+    printf("mixed fds\n");
+    mixer();
+}
 
+
+void level8(){
 
     printf("------------- LEVEL:8 -------------\n");
     printf("logo\n\n\n");
