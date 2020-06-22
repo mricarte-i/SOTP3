@@ -304,6 +304,8 @@ void level10(){
 int main(int argc, char const *argv[]) {
     int socket = initialize_server();
     game(socket);
+
+    return 0;
 }
 
 
