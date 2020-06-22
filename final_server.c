@@ -238,7 +238,7 @@ void level10(){
     printf("------------- LEVEL:10 -------------\n");
     system("gcc quine.c -o quine");
     if( system("./quine | diff - quine.c") != 0 ){
-        write(2, "The files are different\n", 24);
+        write(2, "Not the expected result\n", 24);
         exit(EXIT_FAILURE);
     }
 
