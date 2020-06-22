@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 
-#define MAX_LEVEL 10
+#define MAX_LEVEL 11
 #define MAX_LENGTH_BUFFER 2000
 
 //función para limpiar la pantalla 
@@ -70,7 +70,7 @@ void level1(void);
 void level2(void);
 void level3(void);
 void level4(void);
-//void level5(void);
+void level5(void);
 void level6(void);
 void level7(void);
 void level8(void);
@@ -82,7 +82,7 @@ void level11(void);
 
 
 // arreglo con todos los niveles del juego
-void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level6, level7, level8, level9, level10, level11};
+void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level5, level6, level7, level8, level9, level10, level11};
 
 // función para conectar el server con el cliente a través de un socket
 int initialize_server(){
