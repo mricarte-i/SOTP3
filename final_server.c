@@ -71,19 +71,21 @@ void level2(void);
 void level3(void);
 void level4(void);
 
-void level5(void);
+//void level5(void);
 
-/*
-void level6(void);
-void level7(void);
+
+//void level6(void);
+//void level7(void);
 void level8(void);
 void level9(void);
-void level10(void);
+//void level10(void);
+//void level11(void);
 
-*/
+
+
 
 // arreglo con todos los niveles del juego
-void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level5};
+void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level8};
 
 // función para conectar el server con el cliente a través de un socket
 int initialize_server(){
