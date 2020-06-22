@@ -172,8 +172,8 @@ void gdbme(){
     if(1 == 0){
 
     }else{
-        //intentionally bad stuff
-        int x = 1/0;
+        perror("getline");
+        exit(EXIT_FAILURE);
     }
 }
 
