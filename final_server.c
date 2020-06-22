@@ -143,7 +143,7 @@ void game(int socket){
     for(i = 0; i < MAX_LEVEL; i++){
     	int solved = 0;
         while(!solved){
-           
+            level[i]();
             if(getline(&buffer, &buffer_size, stream) == -1){
               //close(server_fd);
               //close(socket);
@@ -158,8 +158,6 @@ void game(int socket){
                 sleep(2);
             }
             clear_screen();
-            //int current_level = i+1;
-            level[i+1]();
     	}
 	}
 	clear_screen();
