@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 
-#define MAX_LEVEL 8
+#define MAX_LEVEL 9
 #define MAX_LENGTH_BUFFER 2000
 
 //función para limpiar la pantalla 
@@ -78,14 +78,14 @@ void level6(void);
 //void level7(void);
 void level8(void);
 void level9(void);
-//void level10(void);
 void level11(void);
+void level10(void);
 
 
 
 
 // arreglo con todos los niveles del juego
-void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level6, level8, level9, level11};
+void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level6, level8, level9, level10, level11};
 
 // función para conectar el server con el cliente a través de un socket
 int initialize_server(){
@@ -143,7 +143,7 @@ void game(int socket){
     for(i = 0; i < MAX_LEVEL; i++){
     	int solved = 0;
         while(!solved){
-           
+            level[i]();
             if(getline(&buffer, &buffer_size, stream) == -1){
               //close(server_fd);
               //close(socket);
@@ -158,8 +158,6 @@ void game(int socket){
                 sleep(2);
             }
             clear_screen();
-            //int current_level = i+1;
-            level[i+1]();
     	}
 	}
 	clear_screen();
@@ -220,7 +218,7 @@ void level8(){
     int i;
 
     for( i=0; i<29 ;i++){
-        printf(logo[i]);
+        printf("%s",logo[i]);
     }
 
     printf("\n\n");
@@ -235,15 +233,97 @@ void level9(){
     printf("Tango Hotel India Sierra India Sierra Alfa Whiskey Echo Sierra Oscar Mike Echo\n");
 }
 
+
+void level10(){
+    char quine_output[2][200];
+    int my_pipe[2];
+    int pids[2];
+
+    for( int i=0; i < 200; i++ ){
+        quine_output[0][i] = 0;
+        quine_output[1][i] = 0;
+    }
+
+    //QUINE.C
+    if (pipe(my_pipe))
+    {
+        fprintf (stderr, "Pipe failed.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("------------- LEVEL:10 -------------\n");
+    system("gcc quine.c -o quine");
+
+    pids[0] = fork();
+    if( pids[0] < 0 ){
+        perror("Error while using the fork() function.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if( pids[0] == 0 ){
+        char* args[] = {"cat","quine.c", NULL};
+        close(my_pipe[0]);
+        dup2(my_pipe[1], 1);
+        execvp("cat",args);
+    }
+
+    close(my_pipe[1]);
+    char c[1];
+    int r;
+    int i=0;
+    while((r = read(my_pipe[0],c,1)) > 0){
+        quine_output[0][i++] = *c;
+    }
+    printf("%s",quine_output[0]);
+    close(my_pipe[0]);
+
+    //QUINE PROGRAM
+    if (pipe(my_pipe))
+    {
+        fprintf (stderr, "Pipe failed.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    pids[1] = fork();
+    if( pids[1] < 0 ){
+        perror("Error while using the fork() function.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if( pids[1] == 0 ){
+        char* args[] = {NULL};
+        close(my_pipe[0]);
+        dup2(my_pipe[1], 1);
+        execv("quine",args);
+    }
+
+    close(my_pipe[1]);
+    i=0;
+    while((r = read(my_pipe[0],c,1)) > 0){
+        quine_output[1][i++] = *c;
+    }
+    printf("%s",quine_output[1]);
+    close(my_pipe[0]);
+
+    if( strcmp(quine_output[0],quine_output[1]) != 0 ){
+        perror("error in quine");
+        exit(EXIT_FAILURE);
+    }
+    printf("The answer to this puzzle is chin_chu_lan_cha\n");
+}
+
 void level11(){
     printf("------------- LEVEL:11 -------------\n");
     printf("b gdbme\n");
     gdbme();
 }
 
+
 int main(int argc, char const *argv[]) {
     int socket = initialize_server();
     game(socket);
+
+    return 0;
 }
 
 
