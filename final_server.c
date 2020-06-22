@@ -70,10 +70,7 @@ void level1(void);
 void level2(void);
 void level3(void);
 void level4(void);
-
 //void level5(void);
-
-
 void level6(void);
 //void level7(void);
 void level8(void);
@@ -205,7 +202,7 @@ void level4(){
 
 void level6(){
     printf("------------- LEVEL:6 -------------\n");
-    printf("... .got .got.plt .data .comment ?\n");
+    printf("... -s ... : ... .got .got.plt .data .comment ?\n");
 }
 
 
