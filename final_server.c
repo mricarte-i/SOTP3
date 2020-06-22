@@ -195,10 +195,11 @@ void level4(){
     printf("write: Bad file descriptor\n");
 }
 
-void level5(){
+
+void level8(){
 
 
-    printf("------------- LEVEL:5 -------------\n");
+    printf("------------- LEVEL:8 -------------\n");
     printf("logo\n\n\n");
 
     int i;
@@ -206,14 +207,16 @@ void level5(){
     for( i=0; i<29 ;i++){
         printf(logo[i]);
     }
-    
+
     printf("\n\n");
 
 }
 
 
 
+
 void level9(){
+    printf("------------- LEVEL:9 -------------\n");
     printf("Tango Hotel India Sierra India Sierra Alfa Whiskey Echo Sierra Oscar Mike Echo\n");
 }
 
