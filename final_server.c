@@ -219,7 +219,7 @@ void level4(){
 
 void level5(){
     printf("------------- LEVEL:5 -------------\n");
-    printf("strings:52\n");
+    printf("strings:54\n");
 }
 
 
@@ -233,6 +233,7 @@ void level7(){
     printf("------------- LEVEL:7 -------------\n");
     printf("mixed fds\n");
     mixer();
+    printf("\n");
 }
 
 
