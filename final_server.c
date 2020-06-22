@@ -221,80 +221,13 @@ void level9(){
 }
 
 void level10(){
-    char quine_output[2][200];
-    int my_pipe[2];
-    int pids[2];
-
-    for( int i=0; i < 200; i++ ){
-        quine_output[0][i] = 0;
-        quine_output[1][i] = 0;
-    }
-
-    //QUINE.C
-    if (pipe(my_pipe))
-    {
-        fprintf (stderr, "Pipe failed.\n");
-        exit(EXIT_FAILURE);
-    }
-
     printf("------------- LEVEL:10 -------------\n");
     system("gcc quine.c -o quine");
-
-    pids[0] = fork();
-    if( pids[0] < 0 ){
-        perror("Error while using the fork() function.\n");
+    if( system("./quine | diff - quine.c") != 0 ){
+        write(2, "The files are different\n", 24);
         exit(EXIT_FAILURE);
     }
 
-    if( pids[0] == 0 ){
-        char* args[] = {"cat","quine.c", NULL};
-        close(my_pipe[0]);
-        dup2(my_pipe[1], 1);
-        execvp("cat",args);
-    }
-
-    close(my_pipe[1]);
-    char c[1];
-    int r;
-    int i=0;
-    while((r = read(my_pipe[0],c,1)) > 0){
-        quine_output[0][i++] = *c;
-    }
-    printf("%s",quine_output[0]);
-    close(my_pipe[0]);
-
-    //QUINE PROGRAM
-    if (pipe(my_pipe))
-    {
-        fprintf (stderr, "Pipe failed.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    pids[1] = fork();
-    if( pids[1] < 0 ){
-        perror("Error while using the fork() function.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    if( pids[1] == 0 ){
-        char* args[] = {NULL};
-        close(my_pipe[0]);
-        dup2(my_pipe[1], 1);
-        execv("quine",args);
-    }
-
-    close(my_pipe[1]);
-    i=0;
-    while((r = read(my_pipe[0],c,1)) > 0){
-        quine_output[1][i++] = *c;
-    }
-    printf("%s",quine_output[1]);
-    close(my_pipe[0]);
-
-    if( strcmp(quine_output[0],quine_output[1]) != 0 ){
-        perror("error in quine");
-        exit(EXIT_FAILURE);
-    }
     printf("The answer to this puzzle is chin_chu_lan_cha\n");
 }
 
