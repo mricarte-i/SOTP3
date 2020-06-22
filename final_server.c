@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 
-#define MAX_LEVEL 5
+#define MAX_LEVEL 8
 #define MAX_LENGTH_BUFFER 2000
 
 //función para limpiar la pantalla 
@@ -74,18 +74,18 @@ void level4(void);
 //void level5(void);
 
 
-//void level6(void);
+void level6(void);
 //void level7(void);
 void level8(void);
 void level9(void);
 //void level10(void);
-//void level11(void);
+void level11(void);
 
 
 
 
 // arreglo con todos los niveles del juego
-void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level8};
+void (*level[MAX_LEVEL])(void) = {level1, level2, level3, level4, level6, level8, level9, level11};
 
 // función para conectar el server con el cliente a través de un socket
 int initialize_server(){
@@ -170,6 +170,14 @@ void game(int socket){
   	return;
 }
 
+void gdbme(){
+    if(1 == 0){
+
+    }else{
+        //intentionally bad stuff
+        int x = 1/0;
+    }
+}
 
 //-----------------------LEVEL CLUES-------------------------------------
 void level1()
@@ -197,6 +205,11 @@ void level4(){
     printf("write: Bad file descriptor\n");
 }
 
+void level6(){
+    printf("------------- LEVEL:6 -------------\n");
+    printf("... .got .got.plt .data .comment ?\n");
+}
+
 
 void level8(){
 
@@ -222,6 +235,11 @@ void level9(){
     printf("Tango Hotel India Sierra India Sierra Alfa Whiskey Echo Sierra Oscar Mike Echo\n");
 }
 
+void level11(){
+    printf("------------- LEVEL:11 -------------\n");
+    printf("b gdbme\n");
+    gdbme();
+}
 
 int main(int argc, char const *argv[]) {
     int socket = initialize_server();
